@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 public class TranslationService {
 
     private Map<String, String> lookup = Map.of(
-            "Hello", "Bonjour",
+            "hello", "Bonjour",
             "time", "temps",
             "name", "Nom",
             "message", "un message",
-            "I", "je",
+            "i", "je",
             "this", "c'est",
             "from", "de",
             "new", "nouveau",
@@ -26,11 +26,7 @@ public class TranslationService {
 
     public String translate(String message) {
         return Arrays.stream(message.split(" "))
-                .map(word -> Optional.ofNullable(lookup.get(word)).orElse(word))
+                .map(word -> Optional.ofNullable(lookup.get(word.toLowerCase())).orElse(word))
                 .collect(Collectors.joining(" "));
     }
-
-
-
-
 }
